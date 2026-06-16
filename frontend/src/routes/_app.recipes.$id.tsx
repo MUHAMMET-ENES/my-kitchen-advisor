@@ -310,7 +310,7 @@ function RecipeDetail() {
 
           {ratingsQ.data?.length ? (
             <div className="rounded-2xl border border-border bg-card p-6">
-              <h2 className="font-display text-lg font-semibold mb-3">Yorumlar ({ratingsQ.data.length})</h2>
+              <h2 className="font-display text-lg font-semibold mb-3">Değerlendirmeler ({ratingsQ.data.length})</h2>
               <ul className="space-y-3">
                 {ratingsQ.data.map((r) => (
                   <li key={r.id} className="border-b border-border pb-3 last:border-0">
@@ -321,6 +321,8 @@ function RecipeDetail() {
               </ul>
             </div>
           ) : null}
+
+          <RecipeComments recipeId={id} />
         </div>
       </div>
     </>
