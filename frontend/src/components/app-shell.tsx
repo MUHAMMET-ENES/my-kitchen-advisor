@@ -64,7 +64,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </Link>
           </div>
           <nav className="hidden md:flex items-center gap-1">
-            {NAV.slice(0, 4).map((n) => (
+            {NAV.slice(0, 5).map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
@@ -80,6 +80,16 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden md:inline-flex gap-2 text-muted-foreground"
+              onClick={() => window.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }))}
+            >
+              <CommandIcon className="h-3.5 w-3.5" />
+              <span className="text-xs">Ara</span>
+              <kbd className="ml-1 rounded bg-muted px-1.5 py-0.5 text-[10px]">⌘K</kbd>
+            </Button>
             {user ? (
               <>
                 <Link to="/notifications" className="relative">
