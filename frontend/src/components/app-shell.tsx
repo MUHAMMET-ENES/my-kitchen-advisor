@@ -1,6 +1,7 @@
 import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import {
   Home, BookOpen, Package, ShoppingCart, Sparkles, Bookmark, User, Settings, LogOut, ChefHat, Menu, X, Bell, Award,
+  CalendarDays, Activity, Compass, Command as CommandIcon,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -8,10 +9,14 @@ import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { CommandPalette } from "@/components/command-palette";
 
 const NAV = [
   { to: "/dashboard", label: "Panel", icon: Home },
+  { to: "/plan", label: "Haftalık Plan", icon: CalendarDays },
+  { to: "/nutrition", label: "Beslenme", icon: Activity },
   { to: "/recipes", label: "Tarifler", icon: BookOpen },
+  { to: "/discover", label: "Keşfet", icon: Compass },
   { to: "/pantry", label: "Buzdolabım", icon: Package },
   { to: "/shopping", label: "Alışveriş", icon: ShoppingCart },
   { to: "/ai", label: "AI Asistan", icon: Sparkles },
