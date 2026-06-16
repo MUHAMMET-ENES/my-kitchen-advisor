@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Home, BookOpen, Package, ShoppingCart, Sparkles, Bookmark, Award, Bell, User, Settings, CalendarDays, Activity, Compass, Plus } from "lucide-react";
+import { Home, BookOpen, Package, ShoppingCart, Sparkles, Bookmark, Award, Bell, User, Settings, CalendarDays, Activity, Compass, Plus, Siren } from "lucide-react";
 
 const COMMANDS: { label: string; to: string; icon: typeof Home; group: string; keywords?: string }[] = [
+  { label: "Acil Açlık SOS", to: "/sos", icon: Siren, group: "Eylem", keywords: "kurtar acil aç hızlı mood ruh hali" },
   { label: "Panel", to: "/dashboard", icon: Home, group: "Sayfa" },
   { label: "Haftalık plan", to: "/plan", icon: CalendarDays, group: "Sayfa", keywords: "menu plan meal" },
   { label: "Beslenme koçu", to: "/nutrition", icon: Activity, group: "Sayfa", keywords: "macro kalori protein" },

@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SharedTokenRouteImport } from './routes/shared.$token'
+import { Route as AppSosRouteImport } from './routes/_app.sos'
 import { Route as AppShoppingRouteImport } from './routes/_app.shopping'
 import { Route as AppSettingsRouteImport } from './routes/_app.settings'
 import { Route as AppSavedRouteImport } from './routes/_app.saved'
@@ -53,6 +54,11 @@ const SharedTokenRoute = SharedTokenRouteImport.update({
   id: '/shared/$token',
   path: '/shared/$token',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppSosRoute = AppSosRouteImport.update({
+  id: '/sos',
+  path: '/sos',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppShoppingRoute = AppShoppingRouteImport.update({
   id: '/shopping',
@@ -147,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/saved': typeof AppSavedRoute
   '/settings': typeof AppSettingsRoute
   '/shopping': typeof AppShoppingRoute
+  '/sos': typeof AppSosRoute
   '/shared/$token': typeof SharedTokenRoute
   '/recipes/$id': typeof AppRecipesIdRoute
   '/recipes/new': typeof AppRecipesNewRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/saved': typeof AppSavedRoute
   '/settings': typeof AppSettingsRoute
   '/shopping': typeof AppShoppingRoute
+  '/sos': typeof AppSosRoute
   '/shared/$token': typeof SharedTokenRoute
   '/recipes/$id': typeof AppRecipesIdRoute
   '/recipes/new': typeof AppRecipesNewRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/_app/saved': typeof AppSavedRoute
   '/_app/settings': typeof AppSettingsRoute
   '/_app/shopping': typeof AppShoppingRoute
+  '/_app/sos': typeof AppSosRoute
   '/shared/$token': typeof SharedTokenRoute
   '/_app/recipes/$id': typeof AppRecipesIdRoute
   '/_app/recipes/new': typeof AppRecipesNewRoute
@@ -214,6 +223,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/settings'
     | '/shopping'
+    | '/sos'
     | '/shared/$token'
     | '/recipes/$id'
     | '/recipes/new'
@@ -235,6 +245,7 @@ export interface FileRouteTypes {
     | '/saved'
     | '/settings'
     | '/shopping'
+    | '/sos'
     | '/shared/$token'
     | '/recipes/$id'
     | '/recipes/new'
@@ -257,6 +268,7 @@ export interface FileRouteTypes {
     | '/_app/saved'
     | '/_app/settings'
     | '/_app/shopping'
+    | '/_app/sos'
     | '/shared/$token'
     | '/_app/recipes/$id'
     | '/_app/recipes/new'
@@ -306,6 +318,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/shared/$token'
       preLoaderRoute: typeof SharedTokenRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_app/sos': {
+      id: '/_app/sos'
+      path: '/sos'
+      fullPath: '/sos'
+      preLoaderRoute: typeof AppSosRouteImport
+      parentRoute: typeof AppRoute
     }
     '/_app/shopping': {
       id: '/_app/shopping'
@@ -443,6 +462,7 @@ interface AppRouteChildren {
   AppSavedRoute: typeof AppSavedRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppShoppingRoute: typeof AppShoppingRoute
+  AppSosRoute: typeof AppSosRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -459,6 +479,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppSavedRoute: AppSavedRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppShoppingRoute: AppShoppingRoute,
+  AppSosRoute: AppSosRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
