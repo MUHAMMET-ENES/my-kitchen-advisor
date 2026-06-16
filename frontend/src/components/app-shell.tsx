@@ -166,6 +166,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-border/60 bg-card/50 px-4 md:px-8 py-6 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} Yurttaş Mutfakta · Öğrenciler için akıllı mutfak asistanı
       </footer>
+      <CommandPalette />
     </div>
   );
 }
