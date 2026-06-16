@@ -16,6 +16,7 @@ import {
 import { StarRating } from "@/components/star-rating";
 import { RecipeImageUpload } from "@/components/recipe-image-upload";
 import { checkBadges } from "@/lib/ai.functions";
+import { RecipeComments, LikeButton } from "@/components/recipe-comments";
 
 const SUB_LABELS: { key: string; label: string }[] = [
   { key: "satiety", label: "Doyuruculuk" },
@@ -221,6 +222,7 @@ function RecipeDetail() {
         >
           <Heart className="h-4 w-4 mr-2" />Beğendim
         </Button>
+        <LikeButton recipeId={id} />
         {avgOverall > 0 && (
           <div className="flex items-center gap-2 ml-auto text-sm text-muted-foreground">
             <StarRating value={Math.round(avgOverall)} /> ({ratingsQ.data?.length})
@@ -308,7 +310,7 @@ function RecipeDetail() {
 
           {ratingsQ.data?.length ? (
             <div className="rounded-2xl border border-border bg-card p-6">
-              <h2 className="font-display text-lg font-semibold mb-3">Yorumlar ({ratingsQ.data.length})</h2>
+              <h2 className="font-display text-lg font-semibold mb-3">Değerlendirmeler ({ratingsQ.data.length})</h2>
               <ul className="space-y-3">
                 {ratingsQ.data.map((r) => (
                   <li key={r.id} className="border-b border-border pb-3 last:border-0">
@@ -319,6 +321,8 @@ function RecipeDetail() {
               </ul>
             </div>
           ) : null}
+
+          <RecipeComments recipeId={id} />
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
 import { Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import {
   Home, BookOpen, Package, ShoppingCart, Sparkles, Bookmark, User, Settings, LogOut, ChefHat, Menu, X, Bell, Award,
+  CalendarDays, Activity, Compass, Command as CommandIcon,
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -8,10 +9,14 @@ import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { CommandPalette } from "@/components/command-palette";
 
 const NAV = [
   { to: "/dashboard", label: "Panel", icon: Home },
+  { to: "/plan", label: "Haftalık Plan", icon: CalendarDays },
+  { to: "/nutrition", label: "Beslenme", icon: Activity },
   { to: "/recipes", label: "Tarifler", icon: BookOpen },
+  { to: "/discover", label: "Keşfet", icon: Compass },
   { to: "/pantry", label: "Buzdolabım", icon: Package },
   { to: "/shopping", label: "Alışveriş", icon: ShoppingCart },
   { to: "/ai", label: "AI Asistan", icon: Sparkles },
@@ -59,7 +64,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </Link>
           </div>
           <nav className="hidden md:flex items-center gap-1">
-            {NAV.slice(0, 4).map((n) => (
+            {NAV.slice(0, 5).map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
@@ -75,6 +80,16 @@ export function AppShell({ children }: { children: ReactNode }) {
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden md:inline-flex gap-2 text-muted-foreground"
+              onClick={() => window.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }))}
+            >
+              <CommandIcon className="h-3.5 w-3.5" />
+              <span className="text-xs">Ara</span>
+              <kbd className="ml-1 rounded bg-muted px-1.5 py-0.5 text-[10px]">⌘K</kbd>
+            </Button>
             {user ? (
               <>
                 <Link to="/notifications" className="relative">
@@ -151,6 +166,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <footer className="border-t border-border/60 bg-card/50 px-4 md:px-8 py-6 text-center text-xs text-muted-foreground">
         © {new Date().getFullYear()} Yurttaş Mutfakta · Öğrenciler için akıllı mutfak asistanı
       </footer>
+      <CommandPalette />
     </div>
   );
 }
