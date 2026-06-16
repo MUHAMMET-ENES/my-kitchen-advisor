@@ -222,6 +222,7 @@ function RecipeDetail() {
         >
           <Heart className="h-4 w-4 mr-2" />Beğendim
         </Button>
+        <LikeButton recipeId={id} />
         {avgOverall > 0 && (
           <div className="flex items-center gap-2 ml-auto text-sm text-muted-foreground">
             <StarRating value={Math.round(avgOverall)} /> ({ratingsQ.data?.length})
