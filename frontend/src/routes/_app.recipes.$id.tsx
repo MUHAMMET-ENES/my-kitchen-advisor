@@ -16,6 +16,7 @@ import {
 import { StarRating } from "@/components/star-rating";
 import { RecipeImageUpload } from "@/components/recipe-image-upload";
 import { checkBadges } from "@/lib/ai.functions";
+import { RecipeComments, LikeButton } from "@/components/recipe-comments";
 
 const SUB_LABELS: { key: string; label: string }[] = [
   { key: "satiety", label: "Doyuruculuk" },
