@@ -39,6 +39,9 @@ function Dashboard() {
 
   const cards: { to: string; title: string; desc: string; icon: typeof Sparkles; gradient?: boolean }[] = [
     { to: "/ai", title: "AI ile tarif üret", desc: "Elindekilerle hızlı öneri", icon: Sparkles, gradient: true },
+    { to: "/plan", title: "Haftalık plan", desc: "7 günlük menü + market", icon: CalendarDays },
+    { to: "/nutrition", title: "Beslenme koçu", desc: "Makro takip ve grafik", icon: Activity },
+    { to: "/discover", title: "Keşfet", desc: "Topluluk tarifleri", icon: Compass },
     { to: "/recipes", title: "Tariflerim", desc: `${stats.data?.recipeCount ?? "—"} tarif`, icon: BookOpen },
     { to: "/pantry", title: "Buzdolabım", desc: `${stats.data?.pantryCount ?? "—"} ürün`, icon: Package },
     { to: "/shopping", title: "Alışveriş", desc: `${stats.data?.shoppingCount ?? "—"} bekliyor`, icon: ShoppingCart },
